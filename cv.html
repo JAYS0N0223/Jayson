@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="王子壕的个人简历：艺术、音乐教育与文化项目实践。">
+  <title>王子壕 | 艺术与音乐实践者</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&family=Noto+Serif+SC:wght@600;700;900&display=swap');
+    :root { --paper:#f4f1e9; --ink:#17211f; --muted:#66716c; --line:#d7d5cc; --coral:#e66c50; --teal:#176c67; --sun:#f4c950; --white:#fffdf7; --display:'Noto Serif SC',Georgia,serif; --sans:'Manrope','PingFang SC','Hiragino Sans GB',sans-serif; --mono:'DM Mono',monospace; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { position:relative; isolation:isolate; margin:0; color:var(--ink); background:var(--paper); font-family:var(--sans); line-height:1.7; }
+    body::before { content:''; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.4; background-image:radial-gradient(#8f9991 .8px,transparent .8px); background-size:12px 12px; mask-image:linear-gradient(to bottom,#000,transparent 78%); animation:paper-shift 18s linear infinite; }
+    body::after { content:''; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.3; background-image:repeating-linear-gradient(135deg, transparent 0 24px, rgba(23,108,103,.32) 24px 26px, transparent 26px 52px); background-size:104px 104px; animation:line-drift 18s linear infinite; }
+    a { color:inherit; }
+    .page { position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:28px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; padding-bottom:26px; border-bottom:1px solid var(--ink); }
+    .nav { position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; gap:8px; padding:14px 0; border-bottom:1px solid var(--line); background:rgba(244,241,233,.92); backdrop-filter:blur(10px); }
+    .nav a { padding:6px 12px; border:1px solid var(--line); color:var(--muted); font:12px var(--mono); text-decoration:none; transition:background .2s, border-color .2s, color .2s; }
+    .nav a:hover, .nav a:focus-visible, .nav a.active { border-color:var(--teal); background:var(--teal); color:var(--white); outline:none; }
+    .mark { display:flex; gap:10px; align-items:center; font:12px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+    .mark-dot { width:12px; height:12px; background:var(--coral); border-radius:50%; box-shadow:7px -4px 0 var(--sun); }
+    .updated { color:var(--muted); font:12px var(--mono); }
+    .hero { display:grid; grid-template-columns:1.25fr .75fr; gap:70px; align-items:end; padding:76px 0 86px; }
+    .eyebrow { margin:0 0 18px; color:var(--coral); font:500 12px var(--mono); letter-spacing:.14em; text-transform:uppercase; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:760px; margin-bottom:24px; font:900 clamp(48px,8vw,104px)/1.03 var(--display); letter-spacing:-.06em; }
+    .hero-copy { max-width:620px; margin-bottom:0; color:var(--muted); font-size:17px; }
+    .hero-stamp { position:relative; min-height:240px; padding:32px; display:grid; place-items:center; background:var(--teal); color:var(--white); transform:rotate(3deg); }
+    .hero-stamp::before { content:''; position:absolute; inset:14px; border:1px solid rgba(255,253,247,.55); }
+    .hero-stamp strong { position:relative; z-index:1; white-space:nowrap; font:900 78px/1 var(--display); letter-spacing:-.12em; transform:translateX(-4px); }
+    .hero-stamp span { position:absolute; right:24px; bottom:24px; font:12px var(--mono); }
+    .hero > div:first-child { animation:hero-in .8s both cubic-bezier(.2,.8,.2,1); }
+    .hero-stamp { animation:stamp-in .9s .15s both cubic-bezier(.2,.8,.2,1), stamp-float 6s 1.1s ease-in-out infinite; }
+    .mark-dot { animation:dot-pulse 2.4s ease-in-out infinite; }
+    .layout { display:grid; grid-template-columns:250px minmax(0,1fr); gap:74px; border-top:1px solid var(--ink); }
+    .sidebar { position:sticky; top:74px; align-self:start; max-height:calc(100vh - 96px); overflow-y:auto; padding:36px 12px 28px 0; scrollbar-width:thin; scrollbar-color:var(--line) transparent; }
+    .layout.sidebar-collapsed { grid-template-columns:52px minmax(0,1fr); gap:24px; }
+    .sidebar-toggle { position:absolute; top:10px; right:0; z-index:2; width:38px; height:38px; padding:0; border:1px solid var(--line); background:var(--white); color:var(--teal); cursor:pointer; font:18px var(--mono); transition:background .2s, color .2s, transform .2s; }
+    .sidebar-toggle:hover, .sidebar-toggle:focus-visible { background:var(--teal); color:var(--white); outline:none; transform:translateX(-2px); }
+    .sidebar.is-expanded { padding-top:62px; }
+    .sidebar.is-collapsed { width:52px; max-height:none; overflow:visible; padding:12px 0; }
+    .sidebar.is-collapsed > *:not(.sidebar-toggle) { display:none; }
+    .sidebar.is-collapsed .sidebar-toggle { position:static; }
+    .side-block { margin-bottom:46px; }
+    .side-title { margin-bottom:15px; color:var(--coral); font:500 11px var(--mono); letter-spacing:.15em; text-transform:uppercase; }
+    .contact-list { display:grid; gap:13px; margin:0; font-size:14px; }
+    .contact-list dt { color:var(--muted); font-size:12px; }
+    .contact-list dd { margin:0; }
+    .contact-list a { text-decoration-thickness:1px; text-underline-offset:4px; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--teal); font-size:12px; }
+    .side-note { padding:18px; border-left:3px solid var(--sun); background:rgba(255,253,247,.55); color:var(--muted); font-size:13px; }
+    .side-index { padding-top:8px; border-top:1px solid var(--line); }
+    .side-index-title { margin:0 0 14px; color:var(--coral); font:500 11px var(--mono); letter-spacing:.15em; text-transform:uppercase; }
+    .side-index a { display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:13px; text-decoration:none; transition:color .2s, padding .2s; }
+    .side-index a span { color:var(--coral); font:11px var(--mono); }
+    .side-index a:hover { padding-left:7px; color:var(--teal); }
+    .content { padding:36px 0 80px; }
+    .section { padding:30px 0 44px; border-bottom:1px solid var(--line); scroll-margin-top:25px; }
+    .section:first-child { padding-top:0; }
+    .section:last-child { border-bottom:0; }
+    .section-head { display:flex; justify-content:space-between; gap:20px; align-items:baseline; margin-bottom:26px; }
+    h2 { margin-bottom:0; font:700 28px/1.2 var(--display); letter-spacing:-.04em; }
+    .section-index { color:var(--coral); font:12px var(--mono); }
+    .intro { max-width:700px; color:var(--muted); font-size:16px; }
+    .photo-grid { display:grid; grid-template-columns:1.35fr 1fr; gap:10px; margin:0 0 14px; }
+    .photo-grid figure { position:relative; min-height:160px; margin:0; overflow:hidden; background:var(--teal); }
+    .photo-grid .photo-main { grid-row:span 2; min-height:330px; }
+    .photo-grid img { display:block; width:100%; height:100%; object-fit:cover; filter:saturate(.82) contrast(1.04); transition:transform .6s cubic-bezier(.2,.8,.2,1), filter .6s ease; }
+    .photo-grid figure:hover img { transform:scale(1.06); filter:saturate(1) contrast(1.05); }
+    .photo-grid figcaption { position:absolute; right:12px; bottom:10px; color:var(--white); font:11px var(--mono); text-shadow:0 1px 8px rgba(0,0,0,.55); }
+    .photo-note { margin:0 0 30px; color:var(--muted); font:11px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+    .entry { display:grid; grid-template-columns:150px minmax(0,1fr); gap:26px; padding:22px 0; border-top:1px solid var(--line); }
+    .entry-date { color:var(--muted); font:12px/1.5 var(--mono); }
+    .entry-title { margin-bottom:6px; font-size:17px; font-weight:800; }
+    .entry-desc,.entry ul { margin:0; color:var(--muted); font-size:14px; }
+    .entry ul { padding-left:18px; }
+    .entry li + li { margin-top:6px; }
+    .skill-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+    .skill { padding:15px 16px; background:var(--white); border:1px solid var(--line); font-size:14px; }
+    .skill::before { content:'↗'; display:inline-block; margin-right:9px; color:var(--coral); font-family:var(--mono); }
+    .footer { display:flex; justify-content:space-between; gap:20px; padding:25px 0 8px; color:var(--muted); font:11px var(--mono); }
+    body.reveal-ready .section { opacity:1; transform:none; }
+    body.reveal-ready .section.is-visible { animation:section-in .7s both cubic-bezier(.2,.8,.2,1); }
+    @keyframes hero-in { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes stamp-in { from { opacity:0; transform:rotate(9deg) scale(.86); } to { opacity:1; transform:rotate(3deg) scale(1); } }
+    @keyframes stamp-float { 0%,100% { transform:rotate(3deg) translateY(0); } 50% { transform:rotate(1deg) translateY(-8px); } }
+    @keyframes dot-pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.18); } }
+    @keyframes section-in { to { opacity:1; transform:translateY(0); } }
+    @keyframes paper-shift { from { background-position:0 0; } to { background-position:96px 48px; } }
+    @keyframes line-drift { from { transform:translate3d(0,0,0) rotate(0); } to { transform:translate3d(58px,58px,0) rotate(2deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+      body.reveal-ready .section { opacity:1; transform:none; }
+    }
+    @media (max-width:780px) {
+      .page { padding:18px; }
+      .topbar { padding-bottom:18px; }
+      .hero { grid-template-columns:1fr; gap:40px; padding:58px 0 65px; }
+      .hero-stamp { width:190px; min-height:190px; justify-self:end; }
+      .hero-stamp strong { font-size:64px; }
+      .layout, .layout.sidebar-collapsed { display:block; }
+      .sidebar { position:static; display:grid; grid-template-columns:1fr 1fr; gap:28px; max-height:none; overflow:visible; padding:28px 0; border-bottom:1px solid var(--ink); }
+      .sidebar.is-expanded { padding-top:62px; }
+      .sidebar.is-collapsed { display:block; width:auto; padding:12px 0; }
+      .sidebar.is-collapsed .sidebar-toggle { display:block; margin-left:auto; }
+      .side-block { margin-bottom:0; }
+      .side-note { grid-column:1 / -1; }
+      .side-index { grid-column:1 / -1; }
+      .content { padding-top:45px; }
+    }
+    @media (max-width:500px) {
+      .updated { display:none; }
+      h1 { font-size:51px; }
+      .sidebar { grid-template-columns:1fr; }
+      .side-note { grid-column:auto; }
+      .photo-grid { grid-template-columns:1fr; }
+      .photo-grid .photo-main { grid-row:auto; min-height:220px; }
+      .photo-grid figure { min-height:180px; }
+      .entry { grid-template-columns:1fr; gap:8px; }
+      .skill-grid { grid-template-columns:1fr; }
+      .footer { display:block; }
+      .footer span { display:block; margin-top:8px; }
+    }
+    @media print {
+      body::before,.topbar,.nav { display:none; }
+      .page { max-width:none; padding:0; }
+      .hero { padding:24px 0 35px; }
+      .layout { grid-template-columns:200px 1fr; gap:35px; }
+      .content { padding-bottom:0; }
+      .section { break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar"><div class="mark"><span class="mark-dot"></span> Portfolio / CV</div><div class="updated">LAST UPDATED · 2026.09.14</div></div>
+    <nav class="nav" aria-label="页面导航"><a href="#about">简介</a><a href="#education">教育</a><a href="#intern">实习</a><a href="#perform">演出</a><a href="#work">学生工作</a><a href="#skills">技能</a><a href="#contact">联系</a></nav>
+    <header class="hero">
+      <div><p class="eyebrow">艺术实践 · 音乐教育 · 文化项目</p><h1>把舞台变成现场。</h1><p class="hero-copy">以音乐与表演为核心的艺术实践者，兼具教育、演出与项目执行经验。目前在香港岭南大学探索艺术科技与商业的交汇。</p></div>
+      <div class="hero-stamp" aria-label="王子壕的姓名标记"><strong>王子壕</strong><span>ART / LIVE / CULTURE</span></div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <button class="sidebar-toggle" type="button" aria-label="收起侧边栏" aria-expanded="true">‹</button>
+        <div class="side-block"><div class="side-title">Contact</div><dl class="contact-list"><div><dt>电话</dt><dd>6767 1044</dd></div><div><dt>邮箱</dt><dd><a href="mailto:zihhao_ww1@163.com">zihhao_ww1@163.com</a></dd></div><div><dt>现居</dt><dd>香港 / 福建</dd></div></dl></div>
+        <div class="side-block"><div class="side-title">Focus</div><div class="tags"><span class="tag">艺术科技</span><span class="tag">音乐教育</span><span class="tag">舞台统筹</span><span class="tag">文化传承</span></div></div>
+        <div class="side-note">我关注艺术如何在真实的现场发生：从排练室、课堂，到大型节庆与非遗舞台。</div>
+        <nav class="side-index" aria-label="经历章节"><p class="side-index-title">Chapters</p><a href="#about">个人简介<span>01</span></a><a href="#education">教育经历<span>02</span></a><a href="#intern">实习经历<span>03</span></a><a href="#perform">演出经历<span>04</span></a><a href="#work">学生工作<span>05</span></a><a href="#skills">专业技能<span>06</span></a><a href="#contact">保持联系<span>07</span></a></nav>
+      </aside>
+      <div class="content">
+        <section id="about" class="section"><div class="section-head"><h2>个人简介</h2><span class="section-index">01 / ABOUT</span></div><p class="intro">具备教师、演出与大型活动执行经验，善于组织排练与舞台统筹。关注艺术与新媒体、活动策划与文化传承的融合，希望在跨学科环境中将创意落地为有温度的文化体验。</p></section>
+        <div class="photo-grid" aria-label="艺术现场图片"><figure class="photo-main"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1100&q=85" alt="剧院舞台与红色座椅"><figcaption>STAGE / 01</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85" alt="聚光灯下的麦克风"><figcaption>VOICE / 02</figcaption></figure><figure><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=85" alt="现场演出的音乐人"><figcaption>LIVE / 03</figcaption></figure></div><p class="photo-note">现场档案 / STAGE · VOICE · LIVE</p>
+        <section id="education" class="section"><div class="section-head"><h2>教育经历</h2><span class="section-index">02 / STUDY</span></div><div class="entry"><div class="entry-date">2026.09 — 至今</div><div><div class="entry-title">香港岭南大学｜艺术科技与商业 硕士</div><p class="entry-desc">研究方向：艺术与科技结合、文化项目管理</p></div></div><div class="entry"><div class="entry-date">2022.09 — 2026.06</div><div><div class="entry-title">莆田学院｜音乐学（师范）本科</div><p class="entry-desc">绩点：2.73 / 5.0（百分制 77.81 / 100）</p></div></div></section>
+        <section id="intern" class="section"><div class="section-head"><h2>实习经历</h2><span class="section-index">03 / WORK</span></div><div class="entry"><div class="entry-date">2025.09 — 12</div><div><div class="entry-title">音乐教师｜莆田文献中学</div><ul><li>面向初中生开展音乐课程教学，设计互动音乐课堂活动。</li><li>组织学生合唱排练，策划校园音乐活动，指导学生舞台表演。</li></ul></div></div><div class="entry"><div class="entry-date">2025.07 — 09</div><div><div class="entry-title">音乐总监助理｜福建省晋江市民族乐团</div><ul><li>协助总监规划排练日程，整理分析乐谱与音频素材，参与曲目编排。</li><li>完整参与晋江市 2025 国庆音乐会从策划筹备到现场演出的全流程。</li></ul></div></div><div class="entry"><div class="entry-date">2024.06 — 08</div><div><div class="entry-title">导演助理｜惠安县掌中木偶戏艺术保护传承中心</div><ul><li>协助日常排练、演出协调与舞台技术保障，参与《惠安张岳传》排练与正式演出。</li></ul></div></div></section>
+        <section id="perform" class="section"><div class="section-head"><h2>演出经历</h2><span class="section-index">04 / LIVE</span></div><div class="entry"><div class="entry-date">代表演出</div><div><div class="entry-title">舞蹈与非遗类演出</div><ul><li>参演第十五届海峡论坛妈祖文化周、纪念五四运动青春分享汇、莆田首届网络文化节启动仪式等大型活动。</li><li>参与妈祖诞辰春祭、第 25 届湄洲妈祖文化旅游节开幕式、妈祖金身两岸巡礼护送等非遗文化演出。</li></ul></div></div></section>
+        <section id="work" class="section"><div class="section-head"><h2>学生工作</h2><span class="section-index">05 / CAMPUS</span></div><div class="entry"><div class="entry-date">2023.09 — 2026.06</div><div><div class="entry-title">音乐学院篮球队｜队长</div><p class="entry-desc">策划组织院内篮球赛事，统筹选拔流程，代表学院参加校级篮球竞赛。</p></div></div><div class="entry"><div class="entry-date">2022.09 — 2026.06</div><div><div class="entry-title">大学生艺术团｜舞蹈演员</div><p class="entry-desc">完成舞蹈排练任务，配合团队完成舞台呈现，参演校庆《有我》《木兰阳光》等大型演出。</p></div></div></section>
+        <section id="skills" class="section"><div class="section-head"><h2>专业技能</h2><span class="section-index">06 / SKILLS</span></div><div class="skill-grid"><div class="skill">普通话母语（二甲证书）</div><div class="skill">英语流利</div><div class="skill">Microsoft Office 熟练</div><div class="skill">音乐排练与舞台统筹</div><div class="skill">项目执行与活动策划</div></div></section>
+        <section id="contact" class="section"><div class="section-head"><h2>保持联系</h2><span class="section-index">07 / HELLO</span></div><p class="intro">期待参与下一场有意义的艺术现场。</p><p><a href="mailto:zihhao_ww1@163.com">zihhao_ww1@163.com</a> · 6767 1044</p></section>
+      </div>
+    </div>
+    <footer class="footer"><span>王子壕 / 个人简历</span><span>为课程作业制作 · 适合 GitHub Pages 发布</span></footer>
+  </main>
+  <script>
+    const sections = [...document.querySelectorAll('.section')];
+    const navLinks = [...document.querySelectorAll('.nav a')];
+    const layout = document.querySelector('.layout');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    document.body.classList.add('reveal-ready');
+
+    const setSidebarState = collapsed => {
+      layout.classList.toggle('sidebar-collapsed', collapsed);
+      sidebar.classList.toggle('is-collapsed', collapsed);
+      sidebar.classList.toggle('is-expanded', !collapsed);
+      sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
+      sidebarToggle.setAttribute('aria-label', collapsed ? '展开侧边栏' : '收起侧边栏');
+      sidebarToggle.textContent = collapsed ? '›' : '‹';
+      localStorage.setItem('sidebar-collapsed', String(collapsed));
+    };
+    const desktopLayout = window.matchMedia('(min-width: 781px)');
+    setSidebarState(desktopLayout.matches && localStorage.getItem('sidebar-collapsed') === 'true');
+    desktopLayout.addEventListener('change', event => setSidebarState(!event.matches));
+    sidebarToggle.addEventListener('click', () => setSidebarState(!sidebar.classList.contains('is-collapsed')));
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .14 });
+    sections.forEach(section => revealObserver.observe(section));
+
+    const activeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+      });
+    }, { rootMargin: '-18% 0px -68% 0px', threshold: 0 });
+    sections.forEach(section => activeObserver.observe(section));
+
+    const updateOnScroll = () => {
+      let currentSection = sections[0];
+      sections.forEach(section => {
+        const bounds = section.getBoundingClientRect();
+        if (bounds.top < window.innerHeight * .88) section.classList.add('is-visible');
+        if (bounds.top <= window.innerHeight * .35 && bounds.bottom > window.innerHeight * .35) currentSection = section;
+      });
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${currentSection.id}`));
+    };
+    window.addEventListener('scroll', updateOnScroll, { passive: true });
+    updateOnScroll();
+  </script>
+</body>
+</html>
