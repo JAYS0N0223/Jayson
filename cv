@@ -1,0 +1,174 @@
+  <svg class="decor" width="96" height="96" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1">
+        <stop offset="0" stop-color="#f9f2ff"/>
+        <stop offset="1" stop-color="#eef8ff"/>
+      </linearGradient>
+    </defs>
+    <rect x="6" y="6" width="88" height="88" rx="18" fill="url(#g1)" stroke="#f0e7ff" stroke-width="1.5"/>
+  </svg>
+
+  <div class="contact" aria-label="联系方式">
+    <div class="item"><div class="label">电话</div><div>6767 1044</div></div>
+    <div class="item"><div class="label">邮箱</div><div><a href="mailto:zihhao_ww1@163.com">zihhao_ww1@163.com</a></div></div>
+    <div class="item"><div class="label">现居</div><div>香港 / 福建</div></div>
+  </div>
+</aside>
+
+<section class="main">
+  <div class="header">
+    <div class="title">
+      <div class="h1">个人简历 — 王子壕</div>
+      <div class="hint">艺术与音乐结合，具备教育、演出与项目执行经验</div>
+    </div>
+    <nav class="nav" aria-label="页面导航">
+      <a href="#about">简介</a>
+      <a href="#education">教育</a>
+      <a href="#intern">实习</a>
+      <a href="#perform">演出</a>
+      <a href="#work">学生工作</a>
+      <a href="#skills">技能</a>
+      <a href="#contact">联系方式</a>
+    </nav>
+  </div>
+
+  <div class="sections">
+    <!-- About -->
+    <article id="about" class="section" aria-labelledby="about-title">
+      <h2 id="about-title">个人简介</h2>
+      <p class="sub">以音乐与表演为核心的艺术实践者，兼具项目执行与教育经验。当前在香港岭南大学攻读艺术科技与商业硕士，关注艺术与新媒体、活动策划与文化传承的融合。具备教师、演出与大型活动执行经验，善于组织排练与舞台统筹。</p>
+    </article>
+
+    <!-- Education -->
+    <article id="education" class="section" aria-labelledby="edu-title">
+      <h2 id="edu-title">教育经历</h2>
+      <div class="item">
+        <div class="meta">2026.09‑至今</div>
+        <div class="content">
+          <div class="role">香港岭南大学｜艺术科技与商业 硕士</div>
+          <div class="sub">研究方向：艺术与科技结合、文化项目管理</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="meta">2022.09‑2026.06</div>
+        <div class="content">
+          <div class="role">莆田学院｜音乐学（师范） 本科</div>
+          <div class="sub">绩点：2.73/5.0 （百分制 77.81/100）</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Internships -->
+    <article id="intern" class="section" aria-labelledby="intern-title">
+      <h2 id="intern-title">实习经历</h2>
+
+      <div class="item">
+        <div class="meta">2025.09‑2025.12</div>
+        <div class="content">
+          <div class="role">音乐教师｜莆田文献中学</div>
+          <ul class="points">
+            <li>面向初中生开展音乐课程教学，设计互动音乐课堂活动。</li>
+            <li>组织学生合唱排练，策划校园音乐活动，指导学生舞台表演。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="meta">2025.07‑2025.09</div>
+        <div class="content">
+          <div class="role">音乐总监助理｜福建省晋江市民族乐团</div>
+          <ul class="points">
+            <li>协助总监规划排练日程，整理分析乐谱与音频素材，参与曲目编排，维护作品风格统一。</li>
+            <li>完整参与晋江市2025国庆音乐会从策划筹备到现场演出全流程，积累大型音乐项目执行经验。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="meta">2024.06‑2024.08</div>
+        <div class="content">
+          <div class="role">导演助理｜惠安县掌中木偶戏艺术保护传承中心</div>
+          <ul class="points">
+            <li>协助日常排练、演出协调与舞台技术保障，保障项目流程顺畅。</li>
+            <li>参与第九届福建艺术节与第二十九届福建戏剧节剧目《惠安张岳传》排练与正式演出。</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Performances -->
+    <article id="perform" class="section" aria-labelledby="perform-title">
+      <h2 id="perform-title">演出经历</h2>
+      <p class="sub">具备丰富的舞台与非遗文化演出经验，涵盖大型节事与传统文化保护类演出。</p>
+
+      <div class="item">
+        <div class="meta">代表演出</div>
+        <div class="content">
+          <div class="role">舞蹈与非遗类演出</div>
+          <ul class="points">
+            <li>参演第十五届海峡论坛妈祖文化周、纪念五四运动青春分享汇、莆田首届网络文化节启动仪式等大型活动。</li>
+            <li>参与妈祖诞辰春祭、第25届湄洲妈祖文化旅游节开幕式、妈祖金身两岸巡礼护送等非遗文化演出。</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Student Work -->
+    <article id="work" class="section" aria-labelledby="work-title">
+      <h2 id="work-title">学生工作</h2>
+
+      <div class="item">
+        <div class="meta">2023.09‑2026.06</div>
+        <div class="content">
+          <div class="role">音乐学院篮球队 队长</div>
+          <ul class="points">
+            <li>策划组织院内篮球赛事，统筹选拔流程，代表学院参加校级篮球竞赛。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="meta">2022.09‑2026.06</div>
+        <div class="content">
+          <div class="role">大学生艺术团 舞蹈演员</div>
+          <ul class="points">
+            <li>高效完成舞蹈排练任务，配合团队完成高标准舞台呈现，参演校庆《有我》《木兰阳光》等多场高校大型演出。</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- Skills -->
+    <article id="skills" class="section" aria-labelledby="skills-title">
+      <h2 id="skills-title">专业技能</h2>
+      <p class="sub">语言与工具能力</p>
+      <div class="skills" role="list">
+        <div class="skill" role="listitem">普通话 母语（普通话二甲证书）</div>
+        <div class="skill" role="listitem">英语 流利</div>
+        <div class="skill" role="listitem">Microsoft Office 熟练</div>
+        <div class="skill" role="listitem">音乐排练与舞台统筹</div>
+        <div class="skill" role="listitem">项目执行与活动策划</div>
+      </div>
+    </article>
+
+    <!-- Contact -->
+    <article id="contact" class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">联系方式</h2>
+      <div class="item" style="border-top:0">
+        <div class="meta">电话</div>
+        <div class="content">6767 1044</div>
+      </div>
+      <div class="item">
+        <div class="meta">邮箱</div>
+        <div class="content"><a href="mailto:zihhao_ww1@163.com">zihhao_ww1@163.com</a></div>
+      </div>
+      <div class="foot" style="margin-top:12px">
+        <div>简历更新时间：2026‑09‑14</div>
+        <div style="color:var(--muted);font-size:12px">为课程作业制作 • 适合 GitHub Pages 发布</div>
+      </div>
+    </article>
+
+  </div>
+
+</section>
