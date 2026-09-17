@@ -547,8 +547,21 @@
       grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
       gap: 28px;
     }
-    .guestbook-form { display: grid; gap: 12px; align-content: start; }
-    .field-label { color: var(--muted); font-size: 12px; font-weight: 600; }
+    .guestbook-form {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      padding: 20px;
+      border: 1px solid rgba(29,29,31,0.08);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.74);
+      box-shadow: 0 16px 28px rgba(29,29,31,0.04);
+    }
+    .field-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
     .guestbook-form input,
     .guestbook-form textarea {
       width: 100%;
@@ -564,13 +577,73 @@
     }
     .guestbook-form textarea { min-height: 128px; resize: vertical; }
     .guestbook-form input:focus,
-    .guestbook-form textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-    .form-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--soft); font-size: 11px; }
-    .guestbook-submit { justify-self: start; border: 0; cursor: pointer; }
-    .guestbook-status { min-height: 24px; margin: 0; color: var(--accent); font-size: 12px; }
-    .guestbook-list { display: grid; gap: 10px; align-content: start; max-height: 460px; overflow-y: auto; padding-right: 4px; }
-    .guestbook-entry { padding: 16px 18px; border: 1px solid rgba(29,29,31,0.08); border-radius: 16px; background: rgba(255,255,255,0.68); }
-    .entry-header { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+    .guestbook-form textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .form-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: var(--soft);
+      font-size: 11px;
+    }
+    .guestbook-submit {
+      justify-self: start;
+      border: 0;
+      cursor: pointer;
+    }
+    .guestbook-status {
+      min-height: 24px;
+      margin: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+    .guestbook-list {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      max-height: 460px;
+      overflow-y: auto;
+      padding: 8px 8px 8px 0;
+    }
+    .guestbook-entry {
+      display: grid;
+      gap: 12px;
+      padding: 16px 18px;
+      border: 1px solid rgba(29,29,31,0.08);
+      border-left: 3px solid rgba(0,113,227,0.7);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(245,247,250,0.9));
+      box-shadow: 0 12px 24px rgba(29,29,31,0.03);
+    }
+    .entry-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .entry-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .entry-avatar {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1d1d1f, #4b4e57);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
     .entry-name { font-size: 14px; font-weight: 600; }
     .entry-time { color: var(--soft); font: 10px var(--mono); }
     .entry-message { margin: 0; color: var(--muted); font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -821,7 +894,7 @@
               <input id="guestbook-name" name="name" type="text" maxlength="24" placeholder="例如：林老师" required>
               <label class="field-label" for="guestbook-message">想说的话</label>
               <textarea id="guestbook-message" name="message" maxlength="240" placeholder="留下你的想法、合作邀请或现场回忆" required></textarea>
-              <div class="form-meta"><span>留言会保存在当前浏览器</span><span id="message-count">0 / 240</span></div>
+              <div class="form-meta"><span>留言会同步到同一浏览器中的打开页面</span><span id="message-count">0 / 240</span></div>
               <button class="button primary guestbook-submit" type="submit">发布留言</button>
               <p class="guestbook-status" id="guestbook-status" role="status" aria-live="polite"></p>
             </form>
@@ -849,6 +922,18 @@
     const messageCount = document.querySelector('#message-count');
     const guestbookStatus = document.querySelector('#guestbook-status');
     const guestbookKey = 'jayson-guestbook';
+    const guestbookChannel = 'jayson-guestbook-sync';
+    const guestbookApiUrl = window.location.protocol === 'file:'
+      ? 'http://localhost:3000/api/guestbook'
+      : `${window.location.origin}/api/guestbook`;
+
+    const safeReadGuestbook = () => {
+      try {
+        return JSON.parse(localStorage.getItem(guestbookKey) || '[]');
+      } catch (error) {
+        return [];
+      }
+    };
 
     const setCurrentLink = id => {
       allLinks.forEach(link => {
@@ -891,8 +976,7 @@
       month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'
     }).format(new Date(timestamp));
 
-    const renderGuestbook = () => {
-      const entries = JSON.parse(localStorage.getItem(guestbookKey) || '[]');
+    const renderGuestbook = (entries = safeReadGuestbook()) => {
       guestbookList.replaceChildren();
       if (!entries.length) {
         const empty = document.createElement('p');
@@ -906,6 +990,11 @@
         item.className = 'guestbook-entry';
         const header = document.createElement('div');
         header.className = 'entry-header';
+        const meta = document.createElement('div');
+        meta.className = 'entry-meta';
+        const avatar = document.createElement('span');
+        avatar.className = 'entry-avatar';
+        avatar.textContent = String(entry.name || 'A').trim().charAt(0).toUpperCase() || 'A';
         const name = document.createElement('span');
         name.className = 'entry-name';
         name.textContent = entry.name;
@@ -913,34 +1002,95 @@
         time.className = 'entry-time';
         time.dateTime = new Date(entry.createdAt).toISOString();
         time.textContent = formatGuestbookDate(entry.createdAt);
+        meta.append(avatar, name);
+        header.append(meta, time);
         const message = document.createElement('p');
         message.className = 'entry-message';
         message.textContent = entry.message;
-        header.append(name, time);
         item.append(header, message);
         guestbookList.append(item);
       });
+    };
+
+    const syncGuestbookEntries = (entries) => {
+      const safeEntries = Array.isArray(entries) ? entries.slice(0, 30) : safeReadGuestbook();
+      localStorage.setItem(guestbookKey, JSON.stringify(safeEntries));
+      renderGuestbook(safeEntries);
+      if ('BroadcastChannel' in window) {
+        const channel = new BroadcastChannel(guestbookChannel);
+        channel.postMessage({ key: guestbookKey, entries: safeEntries });
+        channel.close();
+      }
+    };
+
+    const hydrateGuestbook = async () => {
+      try {
+        const response = await fetch(guestbookApiUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Fetch failed');
+        const entries = await response.json();
+        if (Array.isArray(entries)) {
+          localStorage.setItem(guestbookKey, JSON.stringify(entries));
+          renderGuestbook(entries);
+        }
+      } catch (error) {
+        renderGuestbook();
+      }
     };
 
     if (guestbookForm) {
       messageInput.addEventListener('input', () => {
         messageCount.textContent = `${messageInput.value.length} / 240`;
       });
-      guestbookForm.addEventListener('submit', event => {
+
+      guestbookForm.addEventListener('submit', async event => {
         event.preventDefault();
         const formData = new FormData(guestbookForm);
         const name = formData.get('name').trim();
         const message = formData.get('message').trim();
         if (!name || !message) return;
-        const entries = JSON.parse(localStorage.getItem(guestbookKey) || '[]');
-        entries.unshift({ name, message, createdAt: Date.now() });
-        localStorage.setItem(guestbookKey, JSON.stringify(entries.slice(0, 30)));
-        guestbookForm.reset();
-        messageCount.textContent = '0 / 240';
-        guestbookStatus.textContent = '留言已发布，感谢你的分享。';
-        renderGuestbook();
+
+        guestbookStatus.textContent = '正在发布留言...';
+
+        try {
+          const response = await fetch(guestbookApiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, message })
+          });
+
+          if (!response.ok) throw new Error('Post failed');
+          const entries = await response.json();
+          syncGuestbookEntries(entries);
+          guestbookForm.reset();
+          messageCount.textContent = '0 / 240';
+          guestbookStatus.textContent = '留言已发布，感谢你的分享。';
+        } catch (error) {
+          const localEntries = safeReadGuestbook();
+          const nextEntries = [{ name, message, createdAt: Date.now() }, ...localEntries].slice(0, 30);
+          localStorage.setItem(guestbookKey, JSON.stringify(nextEntries));
+          syncGuestbookEntries(nextEntries);
+          guestbookForm.reset();
+          messageCount.textContent = '0 / 240';
+          guestbookStatus.textContent = '留言已发布（离线保存），稍后将同步到共享列表。';
+        }
       });
-      renderGuestbook();
+
+      if ('BroadcastChannel' in window) {
+        const channel = new BroadcastChannel(guestbookChannel);
+        channel.onmessage = (event) => {
+          if (event.data && event.data.key === guestbookKey && Array.isArray(event.data.entries)) {
+            renderGuestbook(event.data.entries);
+          }
+        };
+      }
+
+      window.addEventListener('storage', (event) => {
+        if (event.key === guestbookKey) {
+          renderGuestbook();
+        }
+      });
+
+      hydrateGuestbook();
     }
 
     setCurrentLink('about');
