@@ -133,6 +133,93 @@
       .content { padding-bottom:0; }
       .section { break-inside:avoid; }
     }
+
+    /* Apple-inspired visual system */
+    :root {
+      --paper:#f5f5f7;
+      --ink:#1d1d1f;
+      --muted:#6e6e73;
+      --line:#d2d2d7;
+      --coral:#0071e3;
+      --teal:#1d1d1f;
+      --sun:#0071e3;
+      --white:#ffffff;
+      --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;
+      --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;
+      --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    }
+    body { background:var(--paper); font-family:var(--sans); letter-spacing:0; }
+    body::before, body::after { display:none; }
+    .page { max-width:1180px; padding:24px 28px 40px; }
+    .topbar { padding-bottom:20px; border-bottom:1px solid var(--line); }
+    .mark { gap:9px; font-family:var(--sans); font-size:13px; font-weight:600; letter-spacing:0; text-transform:none; }
+    .mark-dot { width:16px; height:16px; background:var(--ink); border-radius:50%; box-shadow:none; }
+    .updated { font-family:var(--mono); font-size:10px; letter-spacing:.05em; }
+    .nav { gap:4px; padding:14px 0; border-bottom:1px solid var(--line); background:rgba(245,245,247,.88); backdrop-filter:blur(20px); }
+    .nav a { padding:7px 13px; border:0; border-radius:999px; color:var(--muted); font:13px var(--sans); transition:background .2s, color .2s; }
+    .nav a:hover, .nav a:focus-visible, .nav a.active { border:0; background:#e8e8ed; color:var(--ink); }
+    .hero { grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr); gap:80px; padding:100px 0 112px; }
+    .eyebrow { margin-bottom:20px; color:var(--ink); font:600 13px var(--sans); letter-spacing:0; text-transform:none; }
+    h1 { max-width:800px; margin-bottom:25px; font:700 clamp(52px,8vw,98px)/1.02 var(--display); letter-spacing:-.055em; }
+    .hero-copy { max-width:580px; color:var(--muted); font-size:19px; line-height:1.55; }
+    .hero-stamp { min-height:285px; padding:34px; border-radius:28px; background:linear-gradient(145deg,#2d2d2f,#111113); color:#fff; transform:none; box-shadow:0 20px 50px rgba(0,0,0,.14); }
+    .hero-stamp::before { inset:18px; border:1px solid rgba(255,255,255,.18); border-radius:18px; }
+    .hero-stamp strong { font:700 68px/1 var(--display); letter-spacing:-.1em; }
+    .hero-stamp span { right:30px; bottom:28px; color:#a1a1a6; font:10px var(--mono); letter-spacing:.05em; }
+    .hero-stamp { animation:stamp-in .9s .15s both cubic-bezier(.2,.8,.2,1); }
+    .mark-dot { animation:none; }
+    .layout { grid-template-columns:235px minmax(0,1fr); gap:72px; border-top:1px solid var(--ink); }
+    .layout.sidebar-collapsed { grid-template-columns:52px minmax(0,1fr); }
+    .sidebar { top:74px; padding:36px 12px 28px 0; }
+    .sidebar-toggle { width:34px; height:34px; border:0; border-radius:50%; background:#e8e8ed; color:var(--ink); font-family:var(--sans); }
+    .sidebar-toggle:hover, .sidebar-toggle:focus-visible { background:var(--ink); color:#fff; transform:none; }
+    .side-block { margin-bottom:40px; }
+    .side-title, .side-index-title { margin-bottom:14px; color:var(--muted); font:600 11px var(--sans); letter-spacing:.06em; text-transform:uppercase; }
+    .contact-list { gap:14px; font-size:14px; }
+    .contact-list dt { color:var(--muted); font-size:12px; }
+    .contact-list a { text-underline-offset:3px; }
+    .tags { gap:6px; }
+    .tag { padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--ink); background:rgba(255,255,255,.5); font-size:12px; }
+    .side-note { padding:17px; border:0; border-radius:16px; background:#fff; color:var(--muted); font-size:13px; line-height:1.55; }
+    .side-index { padding-top:8px; border-top:1px solid var(--line); }
+    .side-index a { padding:9px 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:13px; }
+    .side-index a span { color:var(--muted); font:10px var(--mono); }
+    .side-index a:hover { padding-left:0; color:var(--ink); }
+    .content { padding:44px 0 80px; }
+    .section { padding:36px 0 52px; border-bottom:1px solid var(--line); }
+    .section:first-child { padding-top:0; }
+    .section-head { margin-bottom:28px; }
+    h2 { font:600 32px/1.2 var(--display); letter-spacing:-.04em; }
+    .section-index { color:var(--muted); font:10px var(--mono); letter-spacing:.05em; }
+    .intro { max-width:720px; color:var(--muted); font-size:17px; line-height:1.65; }
+    .photo-grid { gap:12px; margin-bottom:13px; }
+    .photo-grid figure { border-radius:18px; background:#d2d2d7; }
+    .photo-grid img { filter:saturate(.8) contrast(1.02); }
+    .photo-grid figcaption { right:16px; bottom:13px; font-size:10px; }
+    .photo-note { margin-bottom:32px; color:var(--muted); font-size:10px; letter-spacing:.08em; }
+    .entry { grid-template-columns:145px minmax(0,1fr); gap:28px; padding:24px 0; border-top:1px solid var(--line); }
+    .entry-date { color:var(--muted); font-size:12px; }
+    .entry-title { margin-bottom:7px; font-size:17px; font-weight:600; }
+    .entry-desc,.entry ul { color:var(--muted); font-size:14px; line-height:1.65; }
+    .skill-grid { gap:12px; }
+    .skill { padding:17px 18px; border:0; border-radius:16px; background:#fff; font-size:14px; }
+    .skill::before { content:'+'; margin-right:9px; color:var(--coral); font-family:var(--sans); font-weight:600; }
+    .footer { padding-top:25px; color:var(--muted); font:10px var(--mono); }
+    @media (max-width:780px) {
+      .page { padding:18px; }
+      .hero { gap:42px; padding:70px 0 78px; }
+      .hero-stamp { width:210px; min-height:210px; border-radius:24px; }
+      .hero-stamp strong { font-size:58px; }
+      .sidebar { padding:30px 0; }
+      .content { padding-top:42px; }
+    }
+    @media (max-width:500px) {
+      h1 { font-size:52px; }
+      .hero-copy { font-size:17px; }
+      .hero-stamp { justify-self:start; }
+      .section-head { align-items:flex-start; flex-direction:column; gap:8px; }
+      .entry { grid-template-columns:1fr; gap:9px; }
+    }
   </style>
 </head>
 <body>
